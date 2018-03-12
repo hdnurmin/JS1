@@ -45,7 +45,7 @@ function avaaSuosikki(){
  * Kirjaa ulos käyttäjän.
  */
 function kirjauduUlos() {
-    window.alert("Olet nyt kirjautunut ulos. Tervetuloa uudestaan!");
+    window.alert("Olet nyt kirjautunut ulos. Nähdään pian uudestaan!");
     open(url="index.html","_self");
 }
 
@@ -53,7 +53,7 @@ function kirjauduUlos() {
  * Tallentaa haetun reitin suosikiksi.
  */
 function lisaaSuosikki(){
-    window.alert("Tallensit reitin");
+    window.alert("Reittisi on nyt tallennettu");
     lahtoasema = document.getElementById("lahto").value;
     paateasema = document.getElementById("paate").value;
     document.getElementById("suosikkiReitti").innerHTML = "<button class=\"btn btn-block\" id=\"suosikki\" onclick=\"avaaSuosikki()\">Hae suosikkireittiä: " + lahtoasema + " - " + paateasema+"</button>";
@@ -98,7 +98,6 @@ function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
-
 
 window.onload = function () {
 
@@ -197,7 +196,7 @@ window.onload = function () {
 
                 // Varoitetaan, jos yhteyksiä ei löydy, ei turhaan tulosteta tyhjää lähtöasemaa.
                 if(data.code === "TRAIN_NOT_FOUND"){
-                    luoVaroitusViesti("Yhteydelle ei löydy suoria junia! Valitse toinen yhteys.");
+                    luoVaroitusViesti("Valitsemallesi yhteydelle ei ole suoraa junayhteyttä! Valitse toinen yhteys tai siirry vr:n sivulle.");
 
                 }
 
@@ -257,7 +256,7 @@ window.onload = function () {
                     $('#lista').show();
                 }
             } else {
-                luoVaroitusViesti("Pyyntö epäonnistui");
+                luoVaroitusViesti("Ei onnistunut. Jossain on vikaa.");
             }
         }
     };
@@ -341,11 +340,11 @@ function luoJaLisaaUusiKayttaja(){
 
     if(kayttajat === undefined){
         if (uusiNimi === '' && uusiSalasana === ''){
-            luoVaroitusViesti("Syötä käyttäjätunnus ja salasana!")
+            luoVaroitusViesti("Muistithan syötää käyttäjätunnuksen ja salasanan!")
         } else if (uusiNimi !== '' && uusiSalasana === '') {
-            luoVaroitusViesti("Syötä myös salasana!")
+            luoVaroitusViesti("Muist salasana!")
         } else if (uusiNimi === '' && uusiSalasana !== ''){
-            luoVaroitusViesti("Syötä myös käyttäjätunnus!")
+            luoVaroitusViesti("Muista käyttäjätunnus!")
         } else {
             var uusiKirjautuja = "{\"id\":\"" + uusiNimi + "\",\"pw\":\"" + uusiSalasana + "\"}";
             localStorage.kayttajat += uusiKirjautuja;
